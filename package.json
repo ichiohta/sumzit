@@ -1,0 +1,89 @@
+{
+  "name": "sumzit",
+  "displayName": "sumzit",
+  "description": "AI assisted authoring tool",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.78.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "sumzit.replaceWithCompletion",
+        "title": "Sumzit: Replace selection with completion"
+      },
+      {
+        "command": "sumzit.insertCompletion",
+        "title": "Sumzit: Insert completion before selection"
+      },
+      {
+        "command": "sumzit.outputCompletion",
+        "title": "Sumzit: Write completion to Output window"
+      },
+      {
+        "command": "sumzit.editPromptTemplate",
+        "title": "Sumzit: Edit prompt template"
+      }
+    ],
+    "configuration": {
+      "title": "Sumzit",
+      "properties": {
+        "sumzit.template": {
+          "type": "string",
+          "default": "Your task is to compose a paragraph from provided sentences. The sentences are provided between delimiters.\n---\n{!}\n---\n",
+          "description": "Prompt template for OpenAI API"
+        },
+        "sumzit.model": {
+          "type": "string",
+          "default": "text-curie-001",
+          "description": "OpenAI model to use"
+        },
+        "sumzit.apiKey": {
+          "type": "string",
+          "default": "",
+          "description": "API key for OpenAI API"
+        },
+        "sumzit.maxTokens": {
+          "type": "number",
+          "default": 2048,
+          "description": "Max tokens to use for OpenAI API"
+        },
+        "sumzit.temperature": {
+          "type": "number",
+          "default": 0.0,
+          "description": "Temperature to use for OpenAI API"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^8.1.0",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "16.x",
+    "@types/vscode": "^1.78.0",
+    "@typescript-eslint/eslint-plugin": "^5.59.1",
+    "@typescript-eslint/parser": "^5.59.1",
+    "@vscode/test-electron": "^2.3.0",
+    "@vscode/windows-ca-certs": "^0.3.1",
+    "eslint": "^8.39.0",
+    "glob": "^8.1.0",
+    "mocha": "^10.2.0",
+    "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "openai": "^3.2.1"
+  }
+}
