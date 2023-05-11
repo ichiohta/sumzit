@@ -23,7 +23,11 @@
       },
       {
         "command": "sumzit.outputCompletion",
-        "title": "Sumzit: Write completion to Output window"
+        "title": "Sumzit: Write completion to the output window"
+      },
+      {
+        "command": "sumzit.documentCompletion",
+        "title": "Sumzit: Write completion to a new document"
       },
       {
         "command": "sumzit.editPromptTemplate",

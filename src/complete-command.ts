@@ -9,6 +9,7 @@ export enum CommandMode {
     REPLACE = 0,
     INSERT = 1,
     OUTPUT = 2,
+    DOCUMENT = 3,
 }
 
 const createCompleteWithConfiguration = (
@@ -42,7 +43,7 @@ const withProgress = (
     vscode.window.withProgress(
         {
             location: vscode.ProgressLocation.Notification,
-            title: "Your smart AI",
+            title: "ChatGPT",
             cancellable: true,
         },
         (progress, token) =>
@@ -124,6 +125,11 @@ export const createCompleteCommand = (
                     const output = vscode.window.createOutputChannel('Sumzit');
                     output.appendLine(completion);
                     output.show();
+                } else if (mode === CommandMode.DOCUMENT) {
+                    vscode.workspace.openTextDocument({
+                        language: 'plaintext',
+                        content: completion,
+                    });
                 }
             });
         });

@@ -13,10 +13,12 @@ export function activate(context: vscode.ExtensionContext) {
     const replaceCommand = createCompleteCommand(context, CommandMode.REPLACE);
     const insertCommand = createCompleteCommand(context, CommandMode.INSERT);
     const outputCommand = createCompleteCommand(context, CommandMode.OUTPUT);
+    const documentCommand = createCompleteCommand(context, CommandMode.DOCUMENT);
 
     registerCommand("sumzit.replaceWithCompletion", replaceCommand);
     registerCommand("sumzit.insertCompletion", insertCommand);
     registerCommand("sumzit.outputCompletion", outputCommand);
+    registerCommand("sumzit.documentCompletion", documentCommand);
     registerCommand("sumzit.editPromptTemplate", editPromptTemplateCommand);
 
     vscode.workspace.registerFileSystemProvider(
