@@ -1,20 +1,29 @@
-# sumzit README
+# sumzit - An AI Authoring Aid
 
-YES, its' edited.
+## Feature
 
-## Features
+This extension allows you to complete a selected region using [OpenAI](https://platform.openai.com/docs/guides/completion) and use the result in a few different ways.
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+1. Replace the selected region with the completion
 
-For example if there is an image subfolder under your extension project workspace:
+2. Insert the completion where the cursor is
 
-\!\[feature X\]\(images/feature-x.png\)
+3. Open a new document with the completion
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+4. Write the completion to the dedicated output window.
 
-## Requirements
+If you do not select a region, it's considered that the entire file is selected.
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+You can customize the prompt for OpenAI chat completion to articulate the task with a selected region, giving you more control over the output.
+
+## How to Use Completion
+
+First, you need to configure your API key for OpenAI API in the settings. You can get one [here](https://platform.openai.com/).
+
+[]()
+
+
+
 
 ## Extension Settings
 
@@ -29,43 +38,17 @@ This extension contributes the following settings:
 
 ## Known Issues
 
+### It's Bot Quick
+Completion takes time, especially when the prompt is complicated. This asynchronicity might lead to some confusion especially when you are invoking 'sumzit:Replace selection with completion'. It will try to replace
+
+
+ You can cancel it any time 
+
+- You can cancel 
 Calling out known issues can help limit users opening duplicate issues against your extension.
 
 ## Release Notes
 
-Users appreciate release notes as you update your extension.
-
 ### 1.0.0
 
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+Initial release of sumzit.
