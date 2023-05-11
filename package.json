@@ -19,23 +19,23 @@
     "commands": [
       {
         "command": "sumzit.replaceWithCompletion",
-        "title": "Sumzit: Replace selection with completion"
+        "title": "sumzit: Replace selection with completion"
       },
       {
         "command": "sumzit.insertCompletion",
-        "title": "Sumzit: Insert completion before selection"
+        "title": "sumzit: Insert completion before selection"
       },
       {
         "command": "sumzit.outputCompletion",
-        "title": "Sumzit: Write completion to the output window"
+        "title": "sumzit: Write completion to the output window"
       },
       {
         "command": "sumzit.documentCompletion",
-        "title": "Sumzit: Write completion to a new document"
+        "title": "sumzit: Write completion to a new document"
       },
       {
         "command": "sumzit.editPromptTemplate",
-        "title": "Sumzit: Edit prompt template"
+        "title": "sumzit: Edit prompt template"
       }
     ],
     "configuration": {
