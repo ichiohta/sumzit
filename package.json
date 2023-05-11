@@ -39,7 +39,7 @@
       }
     ],
     "configuration": {
-      "title": "Sumzit",
+      "title": "sumzit",
       "properties": {
         "sumzit.template": {
           "type": "string",
