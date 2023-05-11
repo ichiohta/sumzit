@@ -10,9 +10,23 @@
     "type": "git",
     "url": "https://github.com/ichiohta/sumzit"
   },
+  "keywords": [
+    "OpenAI",
+    "ChatGPT"
+  ],
   "categories": [
     "Other"
   ],
+  "galleryBanner": {
+    "color": "#C80000",
+    "theme": "dark"
+  },
+  "license": "SEE LICENSE IN LICENSE",
+  "homepage": "https://github.com/ichiohta/sumzit/blob/main/README.md",
+  "author": {
+    "name": "Ichiro Ota"
+  },
+  "icon": "images/icon.png",
   "activationEvents": [],
   "main": "./out/extension.js",
   "contributes": {
