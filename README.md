@@ -15,11 +15,13 @@ You can customize the prompt for OpenAI chat completion to articulate the task w
 
 First, you need to configure your API key for OpenAI API in the settings. You can get one [here](https://platform.openai.com/).
 
-<img src="./images/configureApiKey.png" width="70%">
+![Hello World](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEYAAAAUCAAAAAAVAxSkAAABrUlEQVQ4y+3TPUvDQBgH8OdDOGa+oUMgk2MpdHIIgpSUiqC0OKirgxYX8QVFRQRpBRF8KShqLbgIYkUEteCgFVuqUEVxEIkvJFhae3m8S2KbSkcFBw9yHP88+eXucgH8kQZ/jSm4VDaIy9RKCpKac9NKgU4uEJNwhHhK3qvPBVO8rxRWmFXPF+NSM1KVMbwriAMwhDgVcrxeMZm85GR0PhvGJAAmyozJsbsxgNEir4iEjIK0SYqGd8sOR3rJAGN2BCEkOxhxMhpd8Mk0CXtZacxi1hr20mI/rzgnxayoidevcGuHXTC/q6QuYSMt1jC+gBIiMg12v2vb5NlklChiWnhmFZpwvxDGzuUzV8kOg+N8UUvNBp64vy9q3UN7gDXhwWLY2nMC3zRDibfsY7wjEkY79CdMZhrxSqqzxf4ZRPXwzWJirMicDa5KwiPeARygHXKNMQHEy3rMopDR20XNZGbJzUtrwDC/KshlLDWyqdmhxZzCsdYmf2fWZPoxCEDyfIvdtNQH0PRkH6Q51g8rFO3Qzxh2LbItcDCOpmuOsV7ntNaERe3v/lP/zO8yn4N+yNPrekmPAAAAAElFTkSuQmCC)
+
+![./images/editTemplate.png](./images/configureApiKey.png)
 
 Then, edit the prompt template to use for completion by invoking ``sumzit:Edit prompt template``. It will open up a text editor to edit the prompt template. ``{!}`` will be replaced with your selection. Once you done with editing, save it.
 
-<img src="./images/editTemplate.png" width="70%">
+![./images/editTemplate.png](./images/editTemplate.png)
 
 To use completion, invoke one of the following commands.
 
