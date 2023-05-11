@@ -27,6 +27,7 @@
     "name": "Ichiro Ota"
   },
   "icon": "images/icon.png",
+  "publisher": "TagawaSoftwareEngineering",
   "activationEvents": [],
   "main": "./out/extension.js",
   "contributes": {
