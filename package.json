@@ -22,8 +22,12 @@
         "title": "sumzit: Replace selection with completion"
       },
       {
-        "command": "sumzit.insertCompletion",
-        "title": "sumzit: Insert completion before selection"
+        "command": "sumzit.insertCompletionBefore",
+        "title": "sumzit: Insert completion before cursor"
+      },
+      {
+        "command": "sumzit.insertCompletionAfter",
+        "title": "sumzit: Insert completion after cursor"
       },
       {
         "command": "sumzit.outputCompletion",

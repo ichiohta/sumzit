@@ -7,9 +7,10 @@ const DEFAULT_TEMPERATURE = 0.0;
 
 export enum CommandMode {
     REPLACE = 0,
-    INSERT = 1,
-    OUTPUT = 2,
-    DOCUMENT = 3,
+    INSERT_BEFORE = 1,
+    INSERT_AFTER = 2,
+    OUTPUT = 3,
+    DOCUMENT = 4,
 }
 
 const createCompleteWithConfiguration = (
@@ -68,23 +69,67 @@ const selectAll = (editor: vscode.TextEditor): vscode.Selection => {
     const { document } = editor;
     const lastLine = document.lineCount - 1;
     const wholeRange = new vscode.Range(
-        0, 0, lastLine, document.lineAt(lastLine).text.length
+        0,
+        0,
+        lastLine,
+        document.lineAt(lastLine).text.length
     );
     return new vscode.Selection(wholeRange.start, wholeRange.end);
-}
+};
 
-const getSelection = (editor: vscode.TextEditor): { text: string, selection: vscode.Selection } => {
+const getSelection = (
+    editor: vscode.TextEditor
+): { text: string; selection: vscode.Selection } => {
     const selectedText = editor.document.getText(editor.selection);
     const { start, end } = editor.selection;
-    const noSelection = (start.compareTo(end) === 0);
-    const selection = noSelection ? selectAll(editor) : new vscode.Selection(start, end);
-    const text = noSelection ? editor.document.getText(selection) : selectedText;
+    const noSelection = start.compareTo(end) === 0;
+    const selection = noSelection
+        ? selectAll(editor)
+        : new vscode.Selection(start, end);
+    const text = noSelection
+        ? editor.document.getText(selection)
+        : selectedText;
 
     return {
         text,
         selection,
     };
 };
+
+const applyCompletion = (
+    editor: vscode.TextEditor,
+    mode: CommandMode,
+    originalSelection: vscode.Selection,
+    completion: string
+): Thenable<boolean> =>
+    editor.edit((editBuilder) => {
+        switch (mode) {
+            case CommandMode.REPLACE:
+                editBuilder.replace(originalSelection, completion);
+                break;
+            case CommandMode.INSERT_BEFORE:
+                const { start } = editor.selection;
+                editBuilder.insert(start, completion);
+                editBuilder.insert(start, "\n");
+                break;
+            case CommandMode.INSERT_AFTER:
+                const { end } = editor.selection;
+                editBuilder.insert(end, "\n");
+                editBuilder.insert(end, completion);
+                break;
+            case CommandMode.OUTPUT:
+                const output = vscode.window.createOutputChannel("Sumzit");
+                output.appendLine(completion);
+                output.show();
+                break;
+            case CommandMode.DOCUMENT:
+                vscode.workspace.openTextDocument({
+                    language: "plaintext",
+                    content: completion,
+                });
+                break;
+        }
+    });
 
 export const createCompleteCommand = (
     context: vscode.ExtensionContext,
@@ -103,35 +148,18 @@ export const createCompleteCommand = (
 
         withProgress("Calculating", async (isCancelled: () => boolean) => {
             const { text, selection } = getSelection(editor);
+
             const prompt = template
                 .replace(/\\n/g, "\r\n")
                 .replace(/\{!\}/, text);
+
             const completion = await complete(prompt);
 
             if (isCancelled()) {
                 return;
             }
 
-            editor.edit((editBuilder) => {
-                if (mode === CommandMode.REPLACE) {
-                    // Replace with the existing text
-                    editBuilder.replace(selection, completion);
-                } else if (mode === CommandMode.INSERT) {
-                    // Insert at the current location
-                    const start = editor.selection.start;
-                    editBuilder.insert(start, completion);
-                    editBuilder.insert(start, "\n");
-                } else if (mode === CommandMode.OUTPUT) {
-                    const output = vscode.window.createOutputChannel('Sumzit');
-                    output.appendLine(completion);
-                    output.show();
-                } else if (mode === CommandMode.DOCUMENT) {
-                    vscode.workspace.openTextDocument({
-                        language: 'plaintext',
-                        content: completion,
-                    });
-                }
-            });
+            await applyCompletion(editor, mode, selection, completion);
         });
     };
 };

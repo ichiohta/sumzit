@@ -11,12 +11,14 @@ export function activate(context: vscode.ExtensionContext) {
     };
 
     const replaceCommand = createCompleteCommand(context, CommandMode.REPLACE);
-    const insertCommand = createCompleteCommand(context, CommandMode.INSERT);
+    const insertBeforeCommand = createCompleteCommand(context, CommandMode.INSERT_BEFORE);
+    const insertAfterCommand = createCompleteCommand(context, CommandMode.INSERT_AFTER);
     const outputCommand = createCompleteCommand(context, CommandMode.OUTPUT);
     const documentCommand = createCompleteCommand(context, CommandMode.DOCUMENT);
 
     registerCommand("sumzit.replaceWithCompletion", replaceCommand);
-    registerCommand("sumzit.insertCompletion", insertCommand);
+    registerCommand("sumzit.insertCompletionBefore", insertBeforeCommand);
+    registerCommand("sumzit.insertCompletionAfter", insertAfterCommand);
     registerCommand("sumzit.outputCompletion", outputCommand);
     registerCommand("sumzit.documentCompletion", documentCommand);
     registerCommand("sumzit.editPromptTemplate", editPromptTemplateCommand);
