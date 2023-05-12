@@ -46,3 +46,6 @@ Completion can take some time, especially when the prompt is complicated. This a
 
 ### 1.0.0
 Initial release of sumzit.
+
+### 1.0.1
+Changed the default language model to ``text-davinci-003``
