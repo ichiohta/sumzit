@@ -2,7 +2,7 @@
     "name": "sumzit",
     "displayName": "sumzit",
     "description": "AI assisted authoring tool",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "engines": {
         "vscode": "^1.78.0"
     },
