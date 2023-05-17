@@ -11,12 +11,18 @@ const COMMENT =
     "// Edit the template for a prompt.\n" +
     "// Use {!} to mark where the selected text is inserted\n";
 
+/**
+ * See API documentation: {@link https://code.visualstudio.com/api/references/vscode-api#FileSystemProvider}
+ */
 export class SumzitTemplateProvider implements vscode.FileSystemProvider {
     private emitter = new vscode.EventEmitter<vscode.FileChangeEvent[]>();
     private timeModified = 0;
 
     private validateFilePath(uri: vscode.Uri) {
-        if (uri.toString().toLowerCase() !== TEMPLATE_URI.toString().toLowerCase()) {
+        if (
+            uri.toString().toLowerCase() !==
+            TEMPLATE_URI.toString().toLowerCase()
+        ) {
             throw vscode.FileSystemError.FileNotFound(uri);
         }
     }
@@ -62,16 +68,18 @@ export class SumzitTemplateProvider implements vscode.FileSystemProvider {
         this.validateFilePath(uri);
         const config = vscode.workspace.getConfiguration("sumzit");
         const templateText = normalizePromptTemplateToStore(content.toString());
-        config.update("template", templateText, vscode.ConfigurationTarget.Global);
+        config.update(
+            "template",
+            templateText,
+            vscode.ConfigurationTarget.Global
+        );
         this.timeModified = new Date().getTime();
     }
 
     public readDirectory(
         uri: vscode.Uri
     ): [string, vscode.FileType][] | Thenable<[string, vscode.FileType][]> {
-        return [
-            [ TEMPLATE_URI.path, vscode.FileType.File ]
-        ];
+        return [[TEMPLATE_URI.path, vscode.FileType.File]];
     }
 
     public createDirectory(uri: vscode.Uri): void | Thenable<void> {
