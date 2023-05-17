@@ -11,9 +11,6 @@ const COMMENT =
     "// Edit the template for a prompt.\n" +
     "// Use {!} to mark where the selected text is inserted\n";
 
-/**
- * See API documentation: {@link https://code.visualstudio.com/api/references/vscode-api#FileSystemProvider}
- */
 export class SumzitTemplateProvider implements vscode.FileSystemProvider {
     private emitter = new vscode.EventEmitter<vscode.FileChangeEvent[]>();
     private timeModified = 0;
