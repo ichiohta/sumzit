@@ -2,7 +2,7 @@
   "name": "sumzit",
   "displayName": "sumzit",
   "description": "AI assisted authoring tool",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "engines": {
     "vscode": "^1.78.0"
   },
@@ -67,7 +67,7 @@
         },
         "sumzit.model": {
           "type": "string",
-          "default": "text-curie-001",
+          "default": "text-davinci-003",
           "description": "OpenAI model to use"
         },
         "sumzit.apiKey": {
